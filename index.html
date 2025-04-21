@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Mirror</title>
+  <script defer src="script.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+      flex-direction: column;
+      text-align: center;
+      transition: background-color 0.5s ease;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+
+    #video {
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    #emotion {
+      font-size: 2.5rem;
+      margin-top: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 2px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .happy {
+      color: #ffeb3b;
+    }
+
+    .sad {
+      color: #00bcd4;
+    }
+
+    .angry {
+      color: #f44336;
+    }
+
+    .neutral {
+      color: #8e8e8e;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mood Mirror</h1>
+  <video id="video" width="640" height="480" autoplay muted></video>
+  <div id="emotion">Detecting Emotion...</div>
+</body>
+</html>
