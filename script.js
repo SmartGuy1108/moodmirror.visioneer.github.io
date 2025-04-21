@@ -1,17 +1,21 @@
 const video = document.getElementById('video');
 const emotionDisplay = document.getElementById('emotion');
 
+// Load the face-api.js models from CDN
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-  faceapi.nets.faceExpressionNet.loadFromUri('/models')
+  faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/npm/face-api.js/models'),
+  faceapi.nets.faceExpressionNet.loadFromUri('https://cdn.jsdelivr.net/npm/face-api.js/models')
 ]).then(startVideo);
 
 function startVideo() {
-  navigator.mediaDevices.getUserMedia({ video: {} })
+  navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
     .then((stream) => {
       video.srcObject = stream;
     })
-    .catch(err => console.error('Error accessing webcam:', err));
+    .catch(err => {
+      console.error('Error accessing webcam:', err);
+      alert("Please allow camera access.");
+    });
 }
 
 video.addEventListener('play', () => {
